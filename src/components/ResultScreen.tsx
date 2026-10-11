@@ -4,6 +4,7 @@ import { EMOTION_OPTIONS } from '../data/storyData';
 import { Award, BookOpen, Volume2, Mic, MicOff, Shuffle, Sparkles, CheckCircle, Heart, Play, AlertCircle, RotateCcw } from 'lucide-react';
 import { speakText, stopSpeaking, startSpeechRecognition, startAudioWithVolumeDetection, SpeechRecognitionController, AudioRecorderController } from '../utils/speech';
 import { sounds } from '../utils/soundEffects';
+import { MaxDog } from './MaxDog';
 
 interface ResultScreenProps {
   score: number;
@@ -184,8 +185,11 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
         </div>
       </div>
 
-      {/* Celebration Heading */}
+      {/* Celebration Heading with shared MaxDog drawing */}
       <div className="text-center space-y-1.5 py-1">
+        <div className="w-24 h-24 mx-auto mb-1 flex items-center justify-center">
+          <MaxDog pose="celebrating" expression="celebrating" hasMedal={true} size="100%" />
+        </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-story">
           You finished the story!
         </h1>
@@ -308,10 +312,9 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
               </div>
               <button
                 onClick={handleStartRecording}
-                className="py-1.5 px-3 rounded-lg bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs shrink-0 cursor-pointer font-korean flex items-center gap-1.5"
+                className="py-1.5 px-3 rounded-lg bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs shrink-0 cursor-pointer font-korean"
               >
-                <Mic className="w-3.5 h-3.5" />
-                <span>Record again (다시 읽기)</span>
+                Record again (다시 읽기)
               </button>
             </div>
           )}
