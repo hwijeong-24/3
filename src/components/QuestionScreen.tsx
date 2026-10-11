@@ -3,6 +3,7 @@ import { InferenceQuestion, StoryPage, WordDefinition } from '../types';
 import { ArrowLeft, ArrowRight, CheckCircle2, HelpCircle, Volume2 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 import { speakText } from '../utils/speech';
+import { StoryIllustration } from './StoryIllustration';
 
 interface QuestionScreenProps {
   question: InferenceQuestion;
@@ -104,14 +105,9 @@ export const QuestionScreen: React.FC<QuestionScreenProps> = ({
 
   return (
     <div className="flex-1 flex flex-col justify-between max-w-lg mx-auto w-full px-3 py-2 sm:px-4">
-      {/* Top half: Picture to inspect closely */}
+      {/* Top half: Picture to inspect closely with shared MaxDog */}
       <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amber-200/80 bg-amber-50/50 shrink-0">
-        <img
-          src={page.image}
-          alt={page.imageAlt}
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover select-none"
-        />
+        <StoryIllustration pageNumber={page.pageNumber} />
       </div>
 
       {/* Middle: Inference Question & Choices */}

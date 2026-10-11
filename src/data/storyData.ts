@@ -9,7 +9,7 @@ export const COVER_IMAGE = '/src/assets/images/cover_max_clean_1791703977714.jpg
 export const STORY_PAGES: StoryPage[] = [
   {
     pageNumber: 1,
-    image: '/src/assets/images/page_garden_max_1791730026851.jpg',
+    image: '/src/assets/images/page_cat_counterpoint_1791700618177.jpg',
     imageAlt: 'Max the little puppy proudly in the garden near the flowerpot',
     counterpointNote: 'The text says he is a brave watchdog, but he is just a tiny fluffy puppy!',
     sentences: [
@@ -37,7 +37,7 @@ export const STORY_PAGES: StoryPage[] = [
   },
   {
     pageNumber: 2,
-    image: '/src/assets/images/page_garden_max_1791730026851.jpg',
+    image: '/src/assets/images/page_cat_counterpoint_1791700618177.jpg',
     imageAlt: 'A peaceful orange cat napping on the fence while Max hides nervously in a flowerpot',
     counterpointNote: 'The text calls the cat a dangerous monster and says Max is calm, but Max is hiding in fear!',
     sentences: [
@@ -493,7 +493,7 @@ export const STORY_STAGES: StoryStage[] = [
     stageNameKr: '도입',
     title: 'Max guards the garden and sees a cat.',
     summary: 'Max guards the garden and sees a cat.',
-    image: '/src/assets/images/page_garden_max_1791730026851.jpg',
+    image: '/src/assets/images/page_cat_counterpoint_1791700618177.jpg',
     pageNumbers: [1, 2],
   },
   {

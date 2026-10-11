@@ -4,6 +4,7 @@ import { STORY_STAGES, STORY_PAGES } from '../data/storyData';
 import { ArrowLeft, BookOpen, Volume2, Sparkles, CheckCircle2, GripVertical } from 'lucide-react';
 import { speakText, stopSpeaking } from '../utils/speech';
 import { sounds } from '../utils/soundEffects';
+import { StoryIllustration } from './StoryIllustration';
 
 interface StoryRebuilderScreenProps {
   onBackToResult: () => void;
@@ -163,14 +164,9 @@ export const StoryRebuilderScreen: React.FC<StoryRebuilderScreenProps> = ({
                     <div className="absolute -top-2 left-4 right-4 h-1 bg-indigo-500 rounded-full animate-pulse pointer-events-none" />
                   )}
 
-                  {/* Stage Image */}
+                  {/* Stage Image with shared MaxDog */}
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shrink-0 border border-slate-200 shadow-2xs">
-                    <img
-                      src={stage.image}
-                      alt={stage.summary}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover pointer-events-none select-none"
-                    />
+                    <StoryIllustration pageNumber={stage.pageNumbers[0]} aspectRatio="1/1" />
                   </div>
 
                   {/* ONE full summary sentence - NO truncation, NO subtitles */}
@@ -220,14 +216,9 @@ export const StoryRebuilderScreen: React.FC<StoryRebuilderScreenProps> = ({
             </button>
           </div>
 
-          {/* Illustration */}
+          {/* Illustration with shared MaxDog */}
           <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-indigo-200 shadow-md bg-amber-50/50">
-            <img
-              src={currentCustomPage.image}
-              alt={currentCustomPage.imageAlt}
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover select-none"
-            />
+            <StoryIllustration pageNumber={currentCustomPage.pageNumber} aspectRatio="4/3" />
           </div>
 
           {/* Text sentences */}
