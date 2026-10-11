@@ -3,7 +3,6 @@ import { StoryPage, WordDefinition, ReadingFeedback, StorySentence } from '../ty
 import { Mic, MicOff, Volume2, ArrowLeft, ArrowRight, Star, RotateCcw, Play, CheckCircle2, AlertCircle } from 'lucide-react';
 import { speakText, stopSpeaking, startSpeechRecognition, startAudioWithVolumeDetection, evaluateReading, SpeechRecognitionController, AudioRecorderController } from '../utils/speech';
 import { sounds } from '../utils/soundEffects';
-import { StoryIllustration } from './StoryIllustration';
 
 interface StoryPageScreenProps {
   page: StoryPage;
@@ -265,9 +264,14 @@ export const StoryPageScreen: React.FC<StoryPageScreenProps> = ({
 
   return (
     <div className="flex-1 flex flex-col justify-between max-w-lg mx-auto w-full px-3 py-2 sm:px-4">
-      {/* Top half: Picture book illustration with shared MaxDog drawing */}
+      {/* Top half: Picture book illustration (WITHOUT any floating buttons covering it!) */}
       <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amber-200/60 bg-amber-50/50 shrink-0">
-        <StoryIllustration pageNumber={page.pageNumber} />
+        <img
+          src={page.image}
+          alt={page.imageAlt}
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover select-none"
+        />
       </div>
 
       {/* Bottom half: Story text sentences & Listen button below */}

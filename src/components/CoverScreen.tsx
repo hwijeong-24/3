@@ -1,8 +1,7 @@
 import React from 'react';
 import { BookOpen, Sparkles, Mic, Search, Smile } from 'lucide-react';
-import { STORY_TITLE, STORY_TITLE_KR, STORY_SUBTITLE, STORY_AUTHOR } from '../data/storyData';
+import { COVER_IMAGE, STORY_TITLE, STORY_TITLE_KR, STORY_SUBTITLE, STORY_AUTHOR } from '../data/storyData';
 import { sounds } from '../utils/soundEffects';
-import { StoryIllustration } from './StoryIllustration';
 
 interface CoverScreenProps {
   onOpenBook: () => void;
@@ -28,7 +27,12 @@ export const CoverScreen: React.FC<CoverScreenProps> = ({ onOpenBook }) => {
       {/* Book Cover Container */}
       <div className="my-auto py-4 flex flex-col items-center">
         <div className="relative group w-full max-w-[280px] sm:max-w-[310px] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-200/80 bg-amber-100">
-          <StoryIllustration pageNumber="cover" aspectRatio="3/4" />
+          <img
+            src={COVER_IMAGE}
+            alt={STORY_TITLE}
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
+          />
 
           {/* Spine ribbon effect */}
           <div className="absolute top-0 left-0 bottom-0 w-3 bg-gradient-to-r from-amber-900/30 to-transparent pointer-events-none" />

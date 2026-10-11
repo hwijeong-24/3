@@ -1,7 +1,6 @@
 import React from 'react';
 import { RotateCcw, BookOpen, Sparkles, Award } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
-import { MaxDog } from './MaxDog';
 
 interface FinalScreenProps {
   badgeCount: number;
@@ -24,10 +23,15 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({
         </div>
       </div>
 
-      {/* Hero Badge & Message with shared MaxDog */}
-      <div className="my-auto py-4 space-y-3">
-        <div className="w-28 h-28 mx-auto">
-          <MaxDog pose="celebrating" expression="celebrating" hasMedal={true} size="100%" />
+      {/* Hero Badge & Message */}
+      <div className="my-auto py-6 space-y-4">
+        <div className="relative inline-block">
+          <div className="w-24 h-24 rounded-3xl bg-amber-500 text-white flex items-center justify-center mx-auto shadow-2xl shadow-amber-500/30">
+            <Award className="w-12 h-12" />
+          </div>
+          <div className="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center border-2 border-white shadow-md">
+            <Sparkles className="w-5 h-5" />
+          </div>
         </div>
 
         <h1 className="text-3xl font-black text-slate-900 font-story">
@@ -38,7 +42,7 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({
         </p>
       </div>
 
-      {/* Two Large Action Buttons (Requirement 1: Single icon, no duplicate emoji) */}
+      {/* Two Large Action Buttons */}
       <div className="space-y-3 pb-4">
         {/* Button 1: Read again */}
         <button

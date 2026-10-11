@@ -9,6 +9,7 @@ interface HeaderProps {
   isQuestion: boolean;
   isRebuilder?: boolean;
   isCatalog?: boolean;
+  screenTitle?: string;
   wordBankCount: number;
   badgeCount: number;
   soundEnabled: boolean;
@@ -23,8 +24,9 @@ export const Header: React.FC<HeaderProps> = ({
   isCover,
   isResult,
   isQuestion,
-  isRebuilder = false,
-  isCatalog = false,
+  isRebuilder,
+  isCatalog,
+  screenTitle,
   wordBankCount,
   badgeCount,
   soundEnabled,
@@ -34,14 +36,14 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-amber-100/80 px-4 py-2.5 flex items-center justify-between gap-3 shadow-xs">
-      {/* Left Slot: Home Button (Requirement 3: on every screen except Cover) & Page Counter/Title */}
-      <div className="flex items-center gap-2 min-w-0">
+      {/* Left Slot: Home button (on all screens except Cover) + Page Counter or Brand */}
+      <div className="flex items-center gap-2">
         {!isCover && (
           <button
             onClick={onOpenHomeConfirm}
             aria-label="Home"
-            className="min-w-[44px] min-h-[44px] w-11 h-11 rounded-2xl flex items-center justify-center text-slate-700 hover:text-amber-800 hover:bg-amber-100/80 active:scale-95 transition-all cursor-pointer border border-amber-200/60 shadow-2xs shrink-0"
-            title="Home (처음 화면으로)"
+            title="처음 화면으로 (Home)"
+            className="w-11 h-11 min-w-[44px] min-h-[44px] -ml-1 rounded-2xl flex items-center justify-center text-amber-800 bg-amber-50 hover:bg-amber-100 active:scale-95 border border-amber-200/80 transition-all cursor-pointer shrink-0 shadow-2xs"
           >
             <Home className="w-5 h-5 text-amber-700" />
           </button>
@@ -57,30 +59,36 @@ export const Header: React.FC<HeaderProps> = ({
             </span>
           </div>
         ) : isResult ? (
-          <div className="flex items-center gap-1.5 truncate">
-            <span className="text-xs sm:text-sm font-bold text-slate-800 font-story truncate">
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm font-bold text-slate-800 font-story">
               Story Complete!
             </span>
           </div>
         ) : isRebuilder ? (
-          <div className="flex items-center gap-1.5 truncate">
-            <span className="text-xs sm:text-sm font-bold text-indigo-800 font-story truncate">
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm font-bold text-slate-800 font-story">
               Story Rebuilder
             </span>
           </div>
         ) : isCatalog ? (
-          <div className="flex items-center gap-1.5 truncate">
-            <span className="text-xs sm:text-sm font-bold text-slate-800 font-story truncate">
-              Choose a book
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm font-bold text-slate-800 font-story">
+              Library
+            </span>
+          </div>
+        ) : screenTitle ? (
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm font-bold text-slate-800 font-story">
+              {screenTitle}
             </span>
           </div>
         ) : (
           <div className="flex items-center gap-2">
-            <span className="text-xs sm:text-sm font-bold text-slate-800 tabular-nums font-story">
+            <span className="text-sm font-bold text-slate-800 tabular-nums font-story">
               Page {currentPage} / {totalPages}
             </span>
             {isQuestion && (
-              <span className="text-[10px] sm:text-[11px] font-semibold text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-full shrink-0">
+              <span className="text-[11px] font-semibold text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-full hidden sm:inline">
                 Picture Question
               </span>
             )}
@@ -89,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Right Slot: Badge count, Word Bank button, Sound toggle */}
-      <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      <div className="flex items-center gap-1.5 sm:gap-2">
         <div
           className="h-8 sm:h-9 px-2.5 rounded-xl bg-amber-100 border border-amber-300 text-amber-900 flex items-center gap-1 text-xs font-black shadow-2xs"
           title="Cumulative earned badges across stories"
@@ -113,11 +121,11 @@ export const Header: React.FC<HeaderProps> = ({
 
         <button
           onClick={onOpenWordBank}
-          className="h-9 px-2.5 sm:px-3 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200/80 text-amber-800 flex items-center gap-1.5 transition-colors text-xs font-bold"
+          className="h-9 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200/80 text-amber-800 flex items-center gap-1.5 transition-colors text-xs font-bold"
           title="Open Word Bank"
         >
           <Bookmark className="w-4 h-4 text-amber-600 fill-amber-500/20" />
-          <span className="hidden sm:inline">Word Bank</span>
+          <span>Word Bank</span>
           <span className="w-5 h-5 rounded-full bg-amber-500 text-white text-[11px] font-bold flex items-center justify-center tabular-nums">
             {wordBankCount}
           </span>
